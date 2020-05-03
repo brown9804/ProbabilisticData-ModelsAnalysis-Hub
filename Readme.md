@@ -17,5 +17,5 @@ y donde "0" representa que no tiene esta característica y "1" que sí la tiene.
 ## Correr el algoritmo
 Este sucede mediante ejecución del comando:
 ~~~~
-PATH$ python3 concep_intro_prob.py
+PATH$ python3 basic_probab_datacsv.py
 ~~~~
