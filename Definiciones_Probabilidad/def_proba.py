@@ -295,7 +295,7 @@ dependeciaD =0
 # varie la cantidad de la toma de datos.
 
 # Utilizando la analogia anterior ...
-print("\nSe analiza independencia y dependencia de una probabilidad de que suceda una caracteristica dada la otra con un 0.05 de incertidumbre respecto a la probabilidad de ocurrencia \n")
+print("\nSe analiza independencia y dependencia de una probabilidad de que suceda una caracteristica dada la otra con un 0.005 de incertidumbre respecto a la probabilidad de ocurrencia \n")
 #Revisando para A
 print("\nResultados de dependencia siguiendo el orden: probabilidadAB, probabilidadAC, probabilidadAD")
 for combisA  in ProbabibilidadDebidoaOtraA: #AB AC AD
