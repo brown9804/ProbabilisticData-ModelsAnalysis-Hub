@@ -286,10 +286,13 @@ dependeciaD =0
 # Dado lo comentado por el profesor con el fin de poder verificar si son dependientes o no, se puede ya sea tomar los valores
 # a como son calculados o considerar un grado de incertidumbre. Se sigue la siguiente lógica para definir mi propio de rango de
 # incertidumbre. Con una muestra de 500 tomas de datos si considero que en todos los casos se da dicha característica un 5% de
-# estos datos equivalen a 25 tomas. Si considero un  muestra_total*0.5% donde la muestra total de 499 son ~ 2.5 tomas lo que por
-# su cualidad se consideran dos muestras. Me parece adecuado considerar que si en un rango de 500 muestra se tomen 2 muestras como
-# incertidumbre, esto me facilita un criterio para evaluar que tan cercano está una probabilidad de ocurrencia respecto a la
-# probabilidad de una caracteristica dada la otra.
+# estos datos equivalen a 25 tomas.
+
+# Ahora bien, si considero un  (muestra_total*0.005) donde la muestra total de 499 son ~ 2.5 tomas lo que por
+# estos datos equivalen a 25 tomas. Si considero un  muestra_total*0.005 donde la muestra total de 499 son ~ 2.5 tomas lo que por
+# su cualidad se tomarían dos muestras. Me parece adecuado elegir 2 muestras para un rango de 500, en donde estas dos muestras. pueden
+# Tomandolas como incertidumbre, esto me facilita un criterio para evaluar que tan cercano está una probabilidad de ocurrencia 
+# respecto a la probabilidad de una caracteristica dada la otra.
 
 # Es muy importante tener en cuenta que el nivel de incertidumbre aceptado siguiendo la lógica anterior va a variar conforme
 # varie la cantidad de la toma de datos.
