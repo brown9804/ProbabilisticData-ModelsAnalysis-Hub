@@ -2,7 +2,7 @@
 # Junio, 2020
 # timna.brown@ucr.ac.cr
 
-#               Frecuencia relativa de Variables aleatorias
+#            Variables aleatorias Conjuntas
 # Se consideran dos bases de datos las cuales contienen los descrito
 # a continuación:
 # 1. ****** Registro de la frecuencia relativa de dos variables aleatorias
