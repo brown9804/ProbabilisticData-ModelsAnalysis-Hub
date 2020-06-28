@@ -5,4 +5,7 @@ timna.brown@ucr.ac.cr
 
             ¿Para qué este folder?
 
-Aquí se encontraran las bases de datos que serán utilizadas.
+Aquí se encontraran las bases de datos que serán utilizadas 
+en el desarrollo del algoritmo, si se dea probar con diferentes
+bases de datos, verificar que calce el nombre del "csv" dentro 
+del main.py con las nuevas bases de datos.
