@@ -15,22 +15,29 @@
 #******************************************************
 #               IMPORTANDO PAQUETES
 #******************************************************
-from __future__ import division
+# Es importante considerar que notas son necesarias pero si
+# fueron usadas durante el desarrollo de la tarea por diversas
+# razones por lo cual se mantiene dentro del algortimo en forma
+# comentario.
+# from __future__ import division
+# from pylab import *
+# from sklearn import *
+# from sklearn.preprocessing import PolynomialFeatures
+# import math
+# import decimal
+# import pandas as pd
+# from scipy.stats import norm
+# from scipy.stats import rayleigh
 import csv
-from pylab import *
+from collections import OrderedDict
 import matplotlib.pyplot as plt
-from sklearn import *
-from sklearn.preprocessing import PolynomialFeatures
+import matplotlib.mlab as mlab
 from numpy import *
 import numpy as np
-import math
-from collections import OrderedDict
-import decimal
 import scipy.stats as stats
-import pandas as pd
-import matplotlib.mlab as mlab
-from scipy.stats import norm
-from scipy.stats import rayleigh
+from scipy.optimize import curve_fit
+
+
 
 #******************************************************
 #               DEFINICIONES
