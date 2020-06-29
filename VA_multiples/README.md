@@ -189,9 +189,30 @@ print("\nEl resultado de la covarianza es de: ",covarianza)
 print("\nDe acuerdo a los datos obtenidos y considerando todo sus decimales se tiene que el coeficiente de Pearson es de: ", coef_pearson)
 ~~~~
 
-Los resultados númericos de esta sección se encuentran en la sección de "Resultados númericos"
+Los resultados númericos de esta sección se encuentran en la sección de "Resultados númericos".
+
+## Gráfica en 2D de densidades marginales y gráfica en 3D de la densidad conjunta
+Esta sección corresponde a las llamadas de las funciones (anteriormente definidas) por medio del siguiente código:
+
+~~~~
+# Dado que se requiere redondear los valores para la gráfica se toma en
+# cuenta que los parámetros completos para el modelo serían los ya calculados
+distribucion_de_x = grafica_en2d(x_mu, x_sigma, 100,"Distribucion_de_X")
+distribucion_de_y = grafica_en2d(y_mu, y_sigma, 100,"Distribucion_de_Y")
+dis_cojun3d = grafica_en3d(x_curva_modelo, y_curva_modelo, probabi_conjuntaX, probabi_conjuntaY, "Distribucion_en_3D")
+~~~~
+
+### Para densidad marginal en 2D de X
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Distribucion_de_X.png)
+
+### Para densidad marginal en 2D de Y
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Distribucion_de_Y.png)
+
+### Para la densidad conjunta en 3D
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Distribucion_en_3D.png)
 
 
 ## Resultados númericos
 ![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/resultados_numericospng)
+
 
