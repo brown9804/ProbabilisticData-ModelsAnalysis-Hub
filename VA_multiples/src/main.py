@@ -160,8 +160,8 @@ correlacion = todos_mu_sum.sum()
 # valores teoricos
 covarianza = correlacion - multi_teoricos
 # Se requiere calcular el coeficiente de correlacion de
-# Pearson en el cual se utilizan los valores experimentales de
-# obtenidos entonces ...
+# Pearson en el cual se utilizan los valores de la data brindada, 
+# entonces ...
 # De acuerdo a los resultados obtenidos al correr el programa
 # se ve que:
 # SigmaDatos_de_X  = 		 3.2994428707078436
