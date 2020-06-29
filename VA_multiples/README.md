@@ -152,8 +152,13 @@ probabi_conjuntaY = distribucion_normal(y_curva_modelo,y_mu,y_sigma)
 ~~~~
 
 ## Valores de correlación , covarianza y coeficiente de correlación de Pearson junto con su significado
-<Marco teorico>
+Considerando lo investigado en clase y en las lecciones se toma en cuenta dos formas de obtener la correlación en la primera se calcula "E[XY]" y en la segunda se busca "E[Y]*E[X]". 
 
+Recordando la definición de **correlación**, se tiene que: es el grado de similitud que poseen dos variables aleatorias entre sí. Por definición sabemos que las variables aleatorias son deterministas, así como la correlación entre ellas no necesariamente signigica que existe causalidad entre ellas. 
+
+Ahora bien, la **covarianza** covarianza nos permite identificar de acuerdo a su valor obtenido si las variables aleatorias son independientes o bien dependientes. De acuerdo a la definición, permite saber la magnitud en la crece una variable aleatoria respecto a otra así como su tendencia ya sea decreciente o creciente siguiendo su analogía con el signo del valor obtenido.
+
+Finalemente, **coeficiente de correlación de Pearson** se conoce como uno de los momentos que poseen las variables aleatorias, siento este normalizado entre -1 a 1. Este momento se puede analizar mediante la siguiente lógica: de -1 a 0 refiere a una correlación negativa y de 0 a 1 refiere a una positiva en donde se mantiene lo descrito anteriormente, referido a la correlación. 
 
 ~~~~
 ###### 			OBTENIDOS CON XY.CSV
