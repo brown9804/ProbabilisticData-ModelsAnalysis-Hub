@@ -135,11 +135,13 @@ y_curva_modelo, y_mu, y_sigma = ajuste_curva(marg_value_y, 5, 25, distribucion_n
 ~~~~
 
 ### Para X
-![image] (results/Datos_de_X.png)
-![image] (results/Modelado_X(x).png)
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Datos_de_X.png)
+
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Modelado_X(x).png)
 
 ### Para Y
-![image] (results/Datos_de_Y.png)
-![image] (results/Modelado_Y(y).png)
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Datos_de_Y.png)
+
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Modelado_Y(y).png)
 
 
