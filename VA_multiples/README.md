@@ -7,6 +7,7 @@ Universidad de Costa Rica
 Belinda Brown, B61254
 
 Junio, 2020
+
 ----------
 
 ## Correr el programa
@@ -213,6 +214,6 @@ dis_cojun3d = grafica_en3d(x_curva_modelo, y_curva_modelo, probabi_conjuntaX, pr
 
 
 ## Resultados númericos
-![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/resultados_numericospng)
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/resultados_numericos.png)
 
 
