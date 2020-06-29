@@ -1,8 +1,8 @@
 ##--------------------------------Main file------------------------------------
 ##
 ## Copyright (C) 2020 by Belinda Brown Ramírez (belindabrownr04@gmail.com)
-##								 June, 2020
-##							timna.brown@ucr.ac.cr
+##			June, 2020
+##		   timna.brown@ucr.ac.cr
 ##-----------------------------------------------------------------------------
 
 #            Variables aleatorias múltiples
@@ -51,7 +51,7 @@ def distribucion_normal(va, mu, sigma):
 	return dist_normal
 
 def densidad_conjunta(va0,va1,mu0,sigma0,mu1,sigma1):
-	val_conjunto = (1/(np.sqrt(2*np.pi*sigma0**2)) * np.exp(-(va0-mu0)**2/(2*sigma0**2))) * (1/(np.sqrt(2*np.pi*sigma1**2)) * np.exp(-(va1-mu1)**2/(2*sigma1**2)))
+	val_conjunto = 1/((np.sqrt(2*np.pi*sigma0**2)) * np.exp(-(va0-mu0)**2/(2*sigma0**2)) * (1/(np.sqrt(2*np.pi*sigma1**2)) * np.exp(-(va1-mu1)**2/(2*sigma1**2))))
 	return val_conjunto
 
 
@@ -108,7 +108,6 @@ def grafica_en3d(VA0_modelo, VA1_modelo, VA0, VA1, nombre):
 	eje_x.plot_surface(VA0,VA1,np.array(Z),cmap=cm.coolwarm)
 	plt.savefig("/Users/belindabrown/Desktop/VA_multiples/results/" + nombre+".png")
 	return
-
 #******************************************************
 #               OBTENIENDO VALORES
 #				DE LOS CSV
@@ -182,6 +181,6 @@ print("\nDe acuerdo a los datos obtenidos y considerando todo sus decimales se t
 #******************************************************
 # Dado que se requiere redondear los valores para la gráfica se toma en
 # cuenta que los parámetros completos para el modelo serían los ya calculados
-distribucion_de_x = grafica_en2d(x_mu, x_sigma, 100,"Distribucion de X")
-distribucion_de_y = grafica_en2d(y_mu, y_sigma, 100,"Distribucion de Y")
-dis_cojun3d = grafica_en3d(x_curva_modelo, y_curva_modelo, probabi_conjuntaX, probabi_conjuntaY, "Distribucion en 3D")
+distribucion_de_x = grafica_en2d(x_mu, x_sigma, 100,"Distribucion_de_X")
+distribucion_de_y = grafica_en2d(y_mu, y_sigma, 100,"Distribucion_de_Y")
+dis_cojun3d = grafica_en3d(x_curva_modelo, y_curva_modelo, probabi_conjuntaX, probabi_conjuntaY, "Distribucion_en_3D")
