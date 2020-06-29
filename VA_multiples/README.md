@@ -78,17 +78,17 @@ def ajuste_curva(marginal, par1, par2, distri_norm, graph_label_dis, distri_x_na
 	plt.cla()
 	return curva_ajustada, mu, sigma
 
-def esperado(marginal,lim_inferior,lim_superior, de_quien_v_esperado):
+def valor_esperado(marginal,lim_inferior,lim_superior, de_quien_v_valor_esperado):
 	dominio = []
-	esperado_marginal = 0
+	valor_esperado_marginal = 0
 	for k in range (5, lim_superior +1):
 		dominio.append(k)
 	dominio = list(OrderedDict.fromkeys(dominio))
 	print("\n\nEl dominio es de:		", dominio)
 	for i in range (0,len(marginal)):
-	    esperado_marginal = esperado_marginal + dominio[i]*marginal[i]
-	print("\n" +de_quien_v_esperado +" tiene un valor esperado de:	", esperado_marginal)
-	return esperado_marginal
+	    valor_esperado_marginal = valor_esperado_marginal + dominio[i]*marginal[i]
+	print("\n" +de_quien_v_valor_esperado +" tiene un valor de:	", valor_esperado_marginal)
+	return valor_esperado_marginal
 
 def grafica_en2d(mu_va, sigma_va, par1_modelo, nombre2d):
 	va_funcion_distri = stats.norm(mu_va,sigma_va)
@@ -118,7 +118,7 @@ def grafica_en3d(VA0_modelo, VA1_modelo, VA0, VA1, nombre):
 ## Importanción de los valores en las bases de datos
 ~~~~
 data = pd.read_csv("/Users/belindabrown/Desktop/VA_multiples/data_base/xy.csv", index_col=0)
-data_xyp = pd.read_csv("/Users/belindabrown/Desktop/VA_multiples/data_base/xyp.cs
+data_xyp = pd.read_csv("/Users/belindabrown/Desktop/VA_multiples/data_base/xyp.csv")
 ~~~~
 
 ## Curva de mejor ajuste para las funciones de densidad marginales de X & Y
@@ -163,25 +163,25 @@ Finalemente, **coeficiente de correlación de Pearson** se conoce como uno de lo
 ~~~~
 ###### 			OBTENIDOS CON XY.CSV
 # Se requieren los valores anteriormente calculados. Para calcular
-# E[X] & E[Y] lo que se conoce como los valores esperados.
-# Valores inicializados de los valores esperados de X y Y (E[X] y E[Y])
+# E[X] & E[Y] lo que se conoce como los valores.
+# Valores inicializados de los valores de X y Y (E[X] y E[Y])
 # Este rango es de [x0, x1], es decir, incluye los limites
-e_x =  esperado(marg_value_x,5,15, "X")
-e_y =  esperado(marg_value_y,5,25, "Y")
-multi_esperados =  e_x*e_y
-# Se calcula E[X]*E[Y] considerando que son independientes
-print("\n\nEl valor esperado de E[X]E[Y] es de: ", multi_esperados)
-###### 			OBTENIDOS CON XYP.CSV
+e_x =  valor_esperado(marg_value_x,5,15, "X")
+e_y =  valor_esperado(marg_value_y,5,25, "Y")
+multi_valor_esperados =  e_x*e_y
+# Se calcula E[X]*E[Y]
+print("\n\nEl valor de E[X]E[Y] es de: ", multi_valor_esperados)
+###### 	OBTENIDOS CON XYP.CSV
 # Dado que la primera fila contiene las etiquetas de x, y, p
 todos_mu_sum = data_xyp.x * data_xyp.y * data_xyp.p
 # La sumatoria de E[XY] nos brinda su correlación
 correlacion = todos_mu_sum.sum()
 # Ahora para la covarianza, de acuerdo a lo visto en clase la
 # covarianza es la correlacion menos la multiplicacion de los
-# valores esperados
-covarianza = correlacion - multi_esperados
+# valores.
+covarianza = correlacion - multi_valor_esperados
 # Se requiere calcular el coeficiente de correlacion de
-# Pearson en el cual se utilizan los valores experimentales de
+# Pearson en el cual se utilizan los valores de la data brindada de
 # obtenidos entonces ...
 # De acuerdo a los resultados obtenidos al correr el programa
 # se ve que:
