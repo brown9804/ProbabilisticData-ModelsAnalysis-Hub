@@ -144,4 +144,54 @@ y_curva_modelo, y_mu, y_sigma = ajuste_curva(marg_value_y, 5, 25, distribucion_n
 
 ![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Modelado_Y(y).png)
 
+## Función de densidad conjunta de X & Y
+~~~~
+probabi_conjuntaX = distribucion_normal(x_curva_modelo,x_mu,x_sigma)
+probabi_conjuntaY = distribucion_normal(y_curva_modelo,y_mu,y_sigma)
+~~~~
+
+## Valores de correlación , covarianza y coeficiente de correlación de Pearson junto con su significado
+<Marco teorico>
+
+
+~~~~
+###### 			OBTENIDOS CON XY.CSV
+# Se requieren los valores anteriormente calculados. Para calcular
+# E[X] & E[Y] lo que se conoce como los valores esperados.
+# Valores inicializados de los valores esperados de X y Y (E[X] y E[Y])
+# Este rango es de [x0, x1], es decir, incluye los limites
+e_x =  esperado(marg_value_x,5,15, "X")
+e_y =  esperado(marg_value_y,5,25, "Y")
+multi_esperados =  e_x*e_y
+# Se calcula E[X]*E[Y] considerando que son independientes
+print("\n\nEl valor esperado de E[X]E[Y] es de: ", multi_esperados)
+###### 			OBTENIDOS CON XYP.CSV
+# Dado que la primera fila contiene las etiquetas de x, y, p
+todos_mu_sum = data_xyp.x * data_xyp.y * data_xyp.p
+# La sumatoria de E[XY] nos brinda su correlación
+correlacion = todos_mu_sum.sum()
+# Ahora para la covarianza, de acuerdo a lo visto en clase la
+# covarianza es la correlacion menos la multiplicacion de los
+# valores esperados
+covarianza = correlacion - multi_esperados
+# Se requiere calcular el coeficiente de correlacion de
+# Pearson en el cual se utilizan los valores experimentales de
+# obtenidos entonces ...
+# De acuerdo a los resultados obtenidos al correr el programa
+# se ve que:
+# SigmaDatos_de_X  = 		 3.2994428707078436
+# SigmaDatos_de_Y  = 		 6.0269377486808775
+# Para el coeficiente pearson se calcula como la covarianza
+# divida entre la multiplicacion de los sigmas
+coef_pearson = covarianza/(3.2994428707078436*6.0269377486808775)
+print("\nEl resultado de la correlación es de: ", correlacion)
+print("\nEl resultado de la covarianza es de: ",covarianza)
+print("\nDe acuerdo a los datos obtenidos y considerando todo sus decimales se tiene que el coeficiente de Pearson es de: ", coef_pearson)
+~~~~
+
+Los resultados númericos de esta sección se encuentran en la sección de "Resultados númericos"
+
+
+## Resultados númericos
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/resultados_numericospng)
 
