@@ -73,17 +73,17 @@ def ajuste_curva(marginal, par1, par2, distri_norm, graph_label_dis, distri_x_na
 	plt.cla()
 	return curva_ajustada, mu, sigma
 
-def teorico(marginal,lim_inferior,lim_superior, de_quien_v_teorico):
+def valor_esperado(marginal,lim_inferior,lim_superior, de_quien_v_valor_esperado):
 	dominio = []
-	teorico_marginal = 0
+	valor_esperado_marginal = 0
 	for k in range (5, lim_superior +1):
 		dominio.append(k)
 	dominio = list(OrderedDict.fromkeys(dominio))
 	print("\n\nEl dominio es de:		", dominio)
 	for i in range (0,len(marginal)):
-	    teorico_marginal = teorico_marginal + dominio[i]*marginal[i]
-	print("\n" +de_quien_v_teorico +" tiene un valor teorico de:	", teorico_marginal)
-	return teorico_marginal
+	    valor_esperado_marginal = valor_esperado_marginal + dominio[i]*marginal[i]
+	print("\n" +de_quien_v_valor_esperado +" tiene un valor de:	", valor_esperado_marginal)
+	return valor_esperado_marginal
 
 def grafica_en2d(mu_va, sigma_va, par1_modelo, nombre2d):
 	va_funcion_distri = stats.norm(mu_va,sigma_va)
@@ -142,14 +142,14 @@ probabi_conjuntaY = distribucion_normal(y_curva_modelo,y_mu,y_sigma)
 #******************************************************
 ###### 	OBTENIDOS CON XY.CSV
 # Se requieren los valores anteriormente calculados. Para calcular
-# E[X] & E[Y] lo que se conoce como los valores teoricos.
-# Valores inicializados de los valores teoricos de X y Y (E[X] y E[Y])
+# E[X] & E[Y] lo que se conoce como los valores.
+# Valores inicializados de los valores de X y Y (E[X] y E[Y])
 # Este rango es de [x0, x1], es decir, incluye los limites
-e_x =  teorico(marg_value_x,5,15, "X")
-e_y =  teorico(marg_value_y,5,25, "Y")
-multi_teoricos =  e_x*e_y
-# Se calcula E[X]*E[Y] considerando que son independientes
-print("\n\nEl valor teorico de E[X]E[Y] es de: ", multi_teoricos)
+e_x =  valor_esperado(marg_value_x,5,15, "X")
+e_y =  valor_esperado(marg_value_y,5,25, "Y")
+multi_valor_esperados =  e_x*e_y
+# Se calcula E[X]*E[Y]
+print("\n\nEl valor de E[X]E[Y] es de: ", multi_valor_esperados)
 ###### 	OBTENIDOS CON XYP.CSV
 # Dado que la primera fila contiene las etiquetas de x, y, p
 todos_mu_sum = data_xyp.x * data_xyp.y * data_xyp.p
@@ -157,11 +157,11 @@ todos_mu_sum = data_xyp.x * data_xyp.y * data_xyp.p
 correlacion = todos_mu_sum.sum()
 # Ahora para la covarianza, de acuerdo a lo visto en clase la
 # covarianza es la correlacion menos la multiplicacion de los
-# valores teoricos
-covarianza = correlacion - multi_teoricos
+# valores.
+covarianza = correlacion - multi_valor_esperados
 # Se requiere calcular el coeficiente de correlacion de
-# Pearson en el cual se utilizan los valores de la data brindada, 
-# entonces ...
+# Pearson en el cual se utilizan los valores de la data brindada de
+# obtenidos entonces ...
 # De acuerdo a los resultados obtenidos al correr el programa
 # se ve que:
 # SigmaDatos_de_X  = 		 3.2994428707078436
