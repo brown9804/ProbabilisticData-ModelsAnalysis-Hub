@@ -11,11 +11,14 @@ Julio, 2020
 ----------
 
 ## Importante
-Es necesario considerar que los resultados ajuntos son los pertencientes a la muestra 1, lo cual se entenderá cuando se analiza la sección de decodificación y demodulación pero esta explicación viene dada en la modulación dado que es un efecto que se acarrea.
+Es necesario considerar que los resultados ajuntos son los pertencientes a la muestra 1, lo cual se entenderá cuando se analiza
+la sección de decodificación y demodulación pero esta explicación viene dada en la modulación dado que es un efecto que se acarrea.
 
 
 ## Correr el programa
-Con el fin de probar el programa, se requieren revisar los paths contenidos en el main.py el cual se encuentra dentro de la carpeta de "src" ya que estos paths están dirigidos a mi máquina. Después de realizar esto se cuenta con un makefile el cual permite probar el algoritmo y limpiar la carpeta de "results" en donde se encuentran los resultados. Se siguen los siguientes comandos.
+Con el fin de probar el programa, se requieren revisar los paths contenidos en el main.py el cual se encuentra dentro de la
+carpeta de "src" ya que estos paths están dirigidos a mi máquina. Después de realizar esto se cuenta con un makefile el cual
+permite probar el algoritmo y limpiar la carpeta de "results" en donde se encuentran los resultados. Se siguen los siguientes comandos.
 
 Para analizar todo lo requerido se debe ingresar:
 
@@ -226,8 +229,10 @@ print("El promedio de potencia es de:			", promedio_potencia, " W\n\n")
 
 ## Canal de ruido tipo AWGN
 
-Se considera un rango de -2 dB a 3 dB por lo que se adjuntan la gráfica pertenecientes al canal de ruido para cada valor. Es importante considerar 
-que para el canal de ruido se utiliza se le ingresa un ruido creado por una función donde se aplican valores aleatorios ya que "np.random.normal(0, sigma, senal_modulada_tx.shape)" utiliza el paquete de aleatorio "random" por lo que cada vez que se ejecute este programa los resultados serán similares pero no iguales 
+Se considera un rango de -2 dB a 3 dB por lo que se adjuntan la gráfica pertenecientes al canal de ruido para cada valor.
+Es importante considerar que para el canal de ruido se utiliza se le ingresa un ruido creado por una función donde se 
+aplican valores aleatorios ya que "np.random.normal(0, sigma, senal_modulada_tx.shape)" utiliza el paquete de aleatorio
+"random" por lo que cada vez que se ejecute este programa los resultados serán similares pero no iguales 
 y esto se acarrarea conforme se continua en el proceso de densidad espectral, decodificación y errores.
 
 ~~~~
@@ -330,7 +335,8 @@ BER_me2a3 = [BER_me2, BER_me1, BER_0, BER_1, BER_2, BER_3]
 SNR_x = list(range(-2,4))
 ~~~~
 
-Así como se mencionó anteriormente, dado que cada vez que se ejecuta el programa los valores varían un poco se presenta la prueba de lo mismo ya que anteriormente se explicó el porqué sucede este fenómeno.
+Así como se mencionó anteriormente, dado que cada vez que se ejecuta el programa los valores varían un poco se 
+presenta la prueba de lo mismo ya que anteriormente se explicó el porqué sucede este fenómeno.
 
 ### Muestra 0
 ![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/result0.png)
@@ -351,7 +357,8 @@ Así como se mencionó anteriormente, dado que cada vez que se ejecuta el progra
 BER_vs_SNR = graph_valores_dos_funciones(BER_me2a3, "BER", SNR_x, "SNR")
 ~~~~
 
-Se adjunta la gráfica de la muestra 1.
+Se adjunta la gráfica de la muestra 1. Se puede apreciar que conforme se aumentan los decibles el BER disminuye, 
+donde BER hace referencia a sus siglas Bit Error Rate.
 
 ### Muestra 1
 ![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/BERSNR.png)
