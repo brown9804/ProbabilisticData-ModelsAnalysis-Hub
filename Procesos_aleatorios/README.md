@@ -281,6 +281,32 @@ welch_despues_1 = welch_senal(f_muestro, Rx_1, "despues_1", 1024)
 welch_despues_2 = welch_senal(f_muestro, Rx_2, "despues_2", 1024)
 welch_despues_3 = welch_senal(f_muestro, Rx_3, "despues_3", 1024)
 ~~~~
+### Antes del ruido
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/densidad_espectral_welch_antes.png)
+
+### Después de agregarle el ruido
+#### -2 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/densidad_espectral_welch_despues_-2.png)
+
+#### -1 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/densidad_espectral_welch_despues_-1.png)
+
+#### 0 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/densidad_espectral_welch_despues_0.png)
+
+#### 1 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/densidad_espectral_welch_despues_1.png)
+
+#### 2 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/densidad_espectral_welch_despues_2.png)
+
+#### 3 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/densidad_espectral_welch_despues_3.png)
+
+
+
+
+
 
 ## Demodulación y decodificación
 ~~~~
