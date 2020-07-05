@@ -233,11 +233,11 @@ molada_tx = graph_perio_modulados(15, puntos, senal_tx_modu, T)
 
 ## Promedio de potencia
 
-<img src="https://render.githubusercontent.com/render/math?math=P(T) = \frac{1}{2T}\int_{-T}^{T}x^2(t)">
+<img src="https://render.githubusercontent.com/render/math?math=P(T) = \frac{1}{2T}\int_{-T}^{T}s^2(t)">
 
 Donde dt es aproximadamente:
 
-<img src="https://render.githubusercontent.com/render/math?math=dt = A*x^2(t)">
+<img src="https://render.githubusercontent.com/render/math?math=dt = A*s^2(t)">
 
 O bien, se conoce como:
 
