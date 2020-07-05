@@ -333,7 +333,7 @@ SNR_x = list(range(-2,4))
 Así como se mencionó anteriormente, dado que cada vez que se ejecuta el programa los valores varían un poco se presenta la prueba de lo mismo ya que anteriormente se explicó el porqué sucede este fenómeno.
 
 ### Muestra 0
-![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/r0.png)
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/result0.png)
 
 
 ### Muestra 1
