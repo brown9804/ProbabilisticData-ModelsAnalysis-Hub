@@ -49,7 +49,7 @@ import scipy.stats as stats
 from scipy.optimize import curve_fit
 ~~~~
 
-## Definciones 
+## Definiciones 
 ~~~~
 def distribucion_normal(va, mu, sigma):
 	dist_normal = 1/(np.sqrt(2*np.pi*sigma**2)) * np.exp(-(va-mu)**2/(2*sigma**2))
@@ -123,6 +123,11 @@ data_xyp = pd.read_csv("/Users/belindabrown/Desktop/VA_multiples/data_base/xyp.c
 
 ## Curva de mejor ajuste para las funciones de densidad marginales de X & Y
 Apartir de los datos en las bases .csv,se encuentra la mejor curva de ajuste (modelo probabilístico) para las funciones de densidad marginales de X y Y. 
+
+Para la curva de mejor ajuste se tiene que:
+
+<img src="https://render.githubusercontent.com/render/math?math=f_{norm}(x) = \frac{1}{\sigma\sqrt{2\cdot\pi}} e^{ -\frac{1}{2} \left(\frac{x-\mu}{\sigma}\right)^2 }">
+
 ~~~~
 # Se requieren los valores marginales tanto de x como de y
 # Columna con la sumatoria de todas las columnas es la probabilidad marginal de X
@@ -146,6 +151,11 @@ y_curva_modelo, y_mu, y_sigma = ajuste_curva(marg_value_y, 5, 25, distribucion_n
 ![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/VA_multiples/results/Modelado_Y(y).png)
 
 ## Función de densidad conjunta de X & Y
+
+La función de densidad conjunta viene definida por:
+
+<img src="https://render.githubusercontent.com/render/math?math=f_{XY}(x,y) = f_{X}(x) \cdot f_{Y}(y)">
+
 ~~~~
 probabi_conjuntaX = distribucion_normal(x_curva_modelo,x_mu,x_sigma)
 probabi_conjuntaY = distribucion_normal(y_curva_modelo,y_mu,y_sigma)
@@ -156,9 +166,27 @@ Considerando lo investigado en clase y en las lecciones se toma en cuenta "E[Y]*
 
 Recordando la definición de **correlación**, se tiene que: es el grado de similitud que poseen dos variables aleatorias entre sí. Por definición sabemos que las variables aleatorias son deterministas, así como la correlación entre ellas no necesariamente signigica que existe causalidad entre ellas. 
 
+Considerando la siguientes fórmula donde R[XY] es la correlación:
+
+<img src="https://render.githubusercontent.com/render/math?math=R_{XY}=\displaystyle\sum_{i=inferior}^{superior}\displaystyle\sum_{j=inferior}^{superior} x_i y_j P(x_i,y_j)">
+
+
 Ahora bien, la **covarianza** covarianza nos permite identificar de acuerdo a su valor obtenido si las variables aleatorias son independientes o bien dependientes. De acuerdo a la definición, permite saber la magnitud en la crece una variable aleatoria respecto a otra así como su tendencia ya sea decreciente o creciente siguiendo su analogía con el signo del valor obtenido.
 
+Para esta sección se tiene que C[XY] es la covarianza y R[XY] es la correlación.
+
+<img src="https://render.githubusercontent.com/render/math?math=E[Y] = \sum_{i=1}^{k} y_i p_{y_i}">
+
+<img src="https://render.githubusercontent.com/render/math?math=E[X] = \sum_{i=1}^{k} x_i p_{x_i}">
+
+<img src="https://render.githubusercontent.com/render/math?math=C_{XY} = R_{XY} - E\left[ X \right] E\left[ Y \right]">
+
+
 Finalemente, **coeficiente de correlación de Pearson** se conoce como uno de los momentos que poseen las variables aleatorias, siento este normalizado entre -1 a 1. Este momento se puede analizar mediante la siguiente lógica: de -1 a 0 refiere a una correlación negativa y de 0 a 1 refiere a una positiva en donde se mantiene lo descrito anteriormente, referido a la correlación. 
+
+Tenemos que el coeficiente Pearson viene dado por:
+
+<img src="https://render.githubusercontent.com/render/math?math=\rho = \frac{C_{XY}}{\sigma_X\sigma_Y}">
 
 ~~~~
 ###### 			OBTENIDOS CON XY.CSV
