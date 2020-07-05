@@ -203,6 +203,12 @@ for k, b in enumerate(bits):
 	  senal_tx_modu[k*puntos:(k+1)*puntos] = -1*onda_p
 molada_tx = graph_perio_modulados(15, puntos, senal_tx_modu, T)
 ~~~~
+### Onda portadora 
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/onda_portadora.png)
+
+### Señal modulada
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/senal_modulada.png)
+
 
 ## Promedio de potencia
 ~~~~
@@ -215,6 +221,10 @@ print("El promedio de potencia es de:			", promedio_potencia, " W\n\n")
 ~~~~
 
 ## Canal de ruido tipo AWGN
+
+Se considera un rango de -2 dB a 3 dB por lo que se adjuntan la gráfica pertenecientes al canal de ruido para cada valor. Es importante considerar 
+que para el canal de ruido se utiliza se le ingresa un ruido creado por una función donde se aplican valores aleatorios ya que "np.random.normal(0, sigma, senal_modulada_tx.shape)" utiliza el paquete de aleatorio "random" por lo que cada vez que se ejecute este programa los resultados serán similares pero no iguales 
+y esto se acarrarea conforme se continua en el proceso de densidad espectral, decodificación y errores.
 
 ~~~~
 #******************************************************
@@ -231,6 +241,26 @@ Rx_1 = AWGN(1, senal_tx_modu, 15, puntos, promedio_potencia)
 Rx_2 = AWGN(2, senal_tx_modu, 15, puntos, promedio_potencia)
 Rx_3 = AWGN(3, senal_tx_modu, 15, puntos, promedio_potencia)
 ~~~~
+### -2 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/AWGN_-2.png)
+
+### -1 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/AWGN_-1.png)
+
+### 0 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/AWGN_0.png)
+
+### 1 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/AWGN_1.png)
+
+### 2 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/AWGN_2.png)
+
+### 3 dB
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/AWGN_3.png)
+
+
+
 
 ## Densidad espectral de potencia mediante el método de Welch
 
