@@ -10,6 +10,10 @@ Julio, 2020
 
 ----------
 
+## Importante
+Es necesario considerar que los resultados ajuntos son los pertencientes a la muestra 1, lo cual se entenderá cuando se analiza la sección de decodificación y demodulación pero esta explicación viene dada en la modulación dado que es un efecto que se acarrea.
+
+
 ## Correr el programa
 Con el fin de probar el programa, se requieren revisar los paths contenidos en el main.py el cual se encuentra dentro de la carpeta de "src" ya que estos paths están dirigidos a mi máquina. Después de realizar esto se cuenta con un makefile el cual permite probar el algoritmo y limpiar la carpeta de "results" en donde se encuentran los resultados. Se siguen los siguientes comandos.
 
@@ -326,6 +330,17 @@ BER_me2a3 = [BER_me2, BER_me1, BER_0, BER_1, BER_2, BER_3]
 SNR_x = list(range(-2,4))
 ~~~~
 
+Así como se mencionó anteriormente, dado que cada vez que se ejecuta el programa los valores varían un poco se presenta la prueba de lo mismo ya que anteriormente se explicó el porqué sucede este fenómeno.
+
+### Muestra 0
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/r0.png)
+
+
+### Muestra 1
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/r1.png)
+
+
+
 ## Gráfica de BNR vs SNR
 ~~~~
 #******************************************************
@@ -335,3 +350,9 @@ SNR_x = list(range(-2,4))
 
 BER_vs_SNR = graph_valores_dos_funciones(BER_me2a3, "BER", SNR_x, "SNR")
 ~~~~
+
+Se adjunta la gráfica de la muestra 1.
+
+### Muestra 1
+![image](https://github.com/brown9804/Modelos_Probabilisticos/blob/master/Procesos_aleatorios/results/BERSNR.png)
+
