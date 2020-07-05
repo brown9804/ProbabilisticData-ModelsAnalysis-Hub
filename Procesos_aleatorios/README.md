@@ -174,3 +174,108 @@ T = 1/f # Periodo de onda --> inverso de la frecuencia [ms]
 puntos = 50 # Se consideran 50 puntos de muestreo por operacion
 puntos_periodo = np.linspace(0, T, puntos) # Puntos de muestreo por cada periodo
 ~~~~
+
+## Modulación BPSK
+~~~~
+#******************************************************
+#       ESQUEMA DE MODULACION BPSK PARA LOS BITS
+#       ------ ONDA PORTADORA -------
+#******************************************************
+# Se considera que la amplitud es de uno pero se coloca un parámetro
+# por si se desea en el futuro modificarlo
+A = 1 # Donde A es amplitud de la onda portadora
+onda_p = A*(np.sin(2*np.pi * f * puntos_periodo))
+grafica_onda_port = grap_onda_p(puntos_periodo, onda_p)
+#*********************************************************
+######  ######  Para la señal modulada  ######  ######
+#*********************************************************
+f_muestro = puntos/T # Frecuencia de muestreo ---> 50 kHz
+# Línea temporal para toda la señal Tx (trasmision)
+l_temp = np.linspace(0, N_bits*T, N_bits*puntos)
+# Inicializar el vector de la señal modulada Tx (transmision)
+senal_tx_modu = np.zeros(l_temp.shape)
+# Creación de la señal modulada BPSK
+for k, b in enumerate(bits):
+  mapped_b = int(''.join(map(str,b)))
+  if mapped_b != 0:
+	  senal_tx_modu[k*puntos:(k+1)*puntos] = mapped_b*onda_p
+  else:
+	  senal_tx_modu[k*puntos:(k+1)*puntos] = -1*onda_p
+molada_tx = graph_perio_modulados(15, puntos, senal_tx_modu, T)
+~~~~
+
+## Promedio de potencia
+~~~~
+#******************************************************
+#      			PROMEDIO DE
+#      			POTENCIA
+#******************************************************
+promedio_potencia = promedio_potencia(T, N_bits, l_temp, senal_tx_modu)
+print("El promedio de potencia es de:			", promedio_potencia, " W\n\n")
+~~~~
+
+## Canal de ruido tipo AWGN
+
+~~~~
+#******************************************************
+#      	CANAL RUIDO TIPO AWGN
+#      	CON RELACION SENAL DE RUIDO SNR -2 a 3dB
+#******************************************************
+# AWGN significa Additive white Gaussian noise dada su
+# traducción al espanol ruido aditivo blanco
+# gaussiano.
+Rx_me2 = AWGN(-2, senal_tx_modu, 15, puntos, promedio_potencia)
+Rx_me1 = AWGN(-1, senal_tx_modu, 15, puntos, promedio_potencia)
+Rx_0 = AWGN(0, senal_tx_modu, 15, puntos, promedio_potencia)
+Rx_1 = AWGN(1, senal_tx_modu, 15, puntos, promedio_potencia)
+Rx_2 = AWGN(2, senal_tx_modu, 15, puntos, promedio_potencia)
+Rx_3 = AWGN(3, senal_tx_modu, 15, puntos, promedio_potencia)
+~~~~
+
+## Densidad espectral de potencia mediante el método de Welch
+
+~~~~
+#******************************************************
+#      	DENSIDAD ESPECTRAL DE POTENCIA
+#       METODO DE WELCH ANTES Y DESPUES
+# 	    DEL CANAL DE RUIDO
+#******************************************************
+welch_antes = welch_senal(f_muestro, senal_tx_modu, "antes", 1024)
+#*********************************************************
+######  ######  Para después del canal con ruido  ######  ######
+#*********************************************************
+welch_despues_me2 = welch_senal(f_muestro, Rx_me2, "despues_-2", 1024)
+welch_despues_me1 = welch_senal(f_muestro, Rx_me1, "despues_-1", 1024)
+welch_despues_0 = welch_senal(f_muestro, Rx_0, "despues_0", 1024)
+welch_despues_1 = welch_senal(f_muestro, Rx_1, "despues_1", 1024)
+welch_despues_2 = welch_senal(f_muestro, Rx_2, "despues_2", 1024)
+welch_despues_3 = welch_senal(f_muestro, Rx_3, "despues_3", 1024)
+~~~~
+
+## Demodulación y decodificación
+~~~~
+#******************************************************
+#      	DEMODULACION Y DECODIFICACION DE LA SENAL,
+#       CONTEO DE LA TASA DE ERROR DE BITS
+# 	    BER (BIT ERROR RATE) PARA CADA SNR
+#******************************************************
+path = "/Users/belindabrown/Desktop/Procesos_aleatorios/data_base/bits10k.csv"
+BER_me2 = demodulacion_y_decodifcacion(N_bits, onda_p, puntos, Rx_me2, path, "-2 dB")
+BER_me1 = demodulacion_y_decodifcacion(N_bits, onda_p,  puntos, Rx_me1, path, "-1 dB")
+BER_0 = demodulacion_y_decodifcacion(N_bits, onda_p, puntos, Rx_0, path, "0 dB")
+BER_1 = demodulacion_y_decodifcacion(N_bits, onda_p,puntos, Rx_1, path, "1 dB")
+BER_2 = demodulacion_y_decodifcacion(N_bits, onda_p,  puntos, Rx_2, path, "2 dB")
+BER_3 = demodulacion_y_decodifcacion(N_bits, onda_p,puntos, Rx_3, path, "3 dB")
+BER_me2a3 = [BER_me2, BER_me1, BER_0, BER_1, BER_2, BER_3]
+SNR_x = list(range(-2,4))
+~~~~
+
+## Gráfica de BNR vs SNR
+~~~~
+#******************************************************
+#      	BER vs SNR
+# 		Rango -2 dB a 3 dB
+#******************************************************
+
+BER_vs_SNR = graph_valores_dos_funciones(BER_me2a3, "BER", SNR_x, "SNR")
+~~~~
