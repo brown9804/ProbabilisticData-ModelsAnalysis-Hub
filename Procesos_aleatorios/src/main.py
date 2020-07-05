@@ -2,8 +2,8 @@
 ##
 ##                          Copyright (C) 2020
 ##             by Belinda Brown Ramírez (belindabrownr04@gmail.com)
-##			                         Julio, 2020
-##		                     timna.brown@ucr.ac.cr
+##			       Julio, 2020
+##		          timna.brown@ucr.ac.cr
 ##-----------------------------------------------------------------------------
 
 # Se considera un archivo con el nombre de  bits10k.csv quien contiene
@@ -136,7 +136,7 @@ def graph_valores_dos_funciones(valores_func0, nombre0, valores_func1, nombre1):
 
 #******************************************************
 #          OBTENIENDO VALORES
-#		   DE LOS CSV
+#	   DE LOS CSV
 #******************************************************
 bits = lectura_archivo_csv("/Users/belindabrown/Desktop/Procesos_aleatorios/data_base/bits10k.csv")
 
@@ -202,7 +202,7 @@ Rx_3 = AWGN(3, senal_tx_modu, 15, puntos, promedio_potencia)
 #******************************************************
 #      	DENSIDAD ESPECTRAL DE POTENCIA
 #       METODO DE WELCH ANTES Y DESPUES
-# 	    DEL CANAL DE RUIDO
+# 	DEL CANAL DE RUIDO
 #******************************************************
 welch_antes = welch_senal(f_muestro, senal_tx_modu, "antes", 1024)
 #*********************************************************
@@ -218,7 +218,7 @@ welch_despues_3 = welch_senal(f_muestro, Rx_3, "despues_3", 1024)
 #******************************************************
 #      	DEMODULACION Y DECODIFICACION DE LA SENAL,
 #       CONTEO DE LA TASA DE ERROR DE BITS
-# 	    BER (BIT ERROR RATE) PARA CADA SNR
+# 	BER (BIT ERROR RATE) PARA CADA SNR
 #******************************************************
 path = "/Users/belindabrown/Desktop/Procesos_aleatorios/data_base/bits10k.csv"
 BER_me2 = demodulacion_y_decodifcacion(N_bits, onda_p, puntos, Rx_me2, path, "-2 dB")
@@ -231,7 +231,7 @@ BER_me2a3 = [BER_me2, BER_me1, BER_0, BER_1, BER_2, BER_3]
 SNR_x = list(range(-2,4))
 #******************************************************
 #      	BER vs SNR
-# 		Rango -2 dB a 3 dB
+#       Rango -2 dB a 3 dB
 #******************************************************
 
 BER_vs_SNR = graph_valores_dos_funciones(BER_me2a3, "BER", SNR_x, "SNR")
