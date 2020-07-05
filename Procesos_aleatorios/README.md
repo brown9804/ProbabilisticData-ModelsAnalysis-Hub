@@ -148,3 +148,29 @@ def graph_valores_dos_funciones(valores_func0, nombre0, valores_func1, nombre1):
 	return
 ~~~~
 
+## Obteniendo los datos del csv
+
+Se hace un llamado a la definición creada. Observar que se posee la ruta (path) de mi máquina por si se desea probar se debe modificar esta ruta.
+~~~~
+#******************************************************
+#          OBTENIENDO VALORES
+#		   DE LOS CSV
+#******************************************************
+bits = lectura_archivo_csv("/Users/belindabrown/Desktop/Procesos_aleatorios/data_base/bits10k.csv")
+~~~~
+
+## Parametrización de ciertas características
+
+Se realizó una sección en donde se parametrizaron ciertas características del modo en el que se pretende operar.
+~~~~
+#******************************************************
+#         PARAMETRIZANDO CIERTAS
+#	      CARACTERISTICAS DE OPERACION
+#******************************************************
+N_bits = len(bits) # Cantidd de bits
+print("\nLa cantidad de bits a transmitir es de:          ", N_bits)
+f = 5000 # Frecuencia de operacion [Hz]
+T = 1/f # Periodo de onda --> inverso de la frecuencia [ms]
+puntos = 50 # Se consideran 50 puntos de muestreo por operacion
+puntos_periodo = np.linspace(0, T, puntos) # Puntos de muestreo por cada periodo
+~~~~
