@@ -355,6 +355,15 @@ welch_despues_3 = welch_senal(f_muestro, Rx_3, "despues_3", 1024)
 ## Demodulación y decodificación
 En esta sección se tiene que:
 
+<img src="https://render.githubusercontent.com/render/math?math=\langle g(t), h(t) \rangle = \int_0^T g(t) h(t)dt ">
+
+Donde se considera que: 
+
+<img src="https://render.githubusercontent.com/render/math?math=\langle g(t), g(t) \rangle = E_{g}">  Siendo esto la energía interna de la señal
+
+
+<img src="https://render.githubusercontent.com/render/math?math=\langle g(t), h(t) \rangle = 0"> Para el caso de ortogonalidad, es decir, si existe un ángulo de 
+90 grados entre ellas.
 
 ~~~~
 #******************************************************
