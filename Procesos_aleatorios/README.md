@@ -169,6 +169,13 @@ bits = lectura_archivo_csv("/Users/belindabrown/Desktop/Procesos_aleatorios/data
 ## Parametrización de ciertas características
 
 Se realizó una sección en donde se parametrizaron ciertas características del modo en el que se pretende operar.
+
+<img src="https://render.githubusercontent.com/render/math?math=f = 5000 Hz">
+
+<img src="https://render.githubusercontent.com/render/math?math=T =  \frac{1}{f} ms">
+
+<img src="https://render.githubusercontent.com/render/math?math=puntos = 50">
+
 ~~~~
 #******************************************************
 #         PARAMETRIZANDO CIERTAS
@@ -183,6 +190,13 @@ puntos_periodo = np.linspace(0, T, puntos) # Puntos de muestreo por cada periodo
 ~~~~
 
 ## Modulación BPSK
+
+<img src="https://render.githubusercontent.com/render/math?math=s(t) = A*sin(2*\pi*f*t)">
+
+<img src="https://render.githubusercontent.com/render/math?math=s_{0}(t) = -A*sin(2*\pi*f*t)">
+
+<img src="https://render.githubusercontent.com/render/math?math=f_{muestro}= \frac{puntos}{f} ">
+
 ~~~~
 #******************************************************
 #       ESQUEMA DE MODULACION BPSK PARA LOS BITS
@@ -218,6 +232,21 @@ molada_tx = graph_perio_modulados(15, puntos, senal_tx_modu, T)
 
 
 ## Promedio de potencia
+
+<img src="https://render.githubusercontent.com/render/math?math=P(T) = \frac{1}{2T}\int_{-T}^{T}x^2(t)">
+
+Donde dt es aproximadamente:
+
+<img src="https://render.githubusercontent.com/render/math?math=dt = A*x^2(t)">
+
+O bien, se conoce como:
+
+<img src="https://render.githubusercontent.com/render/math?math=P(T)= \frac{1}{2T}\int_{-T}^{T}E[X^2(t)]">
+	  
+Donde dt es aproximadamente:
+
+<img src="https://render.githubusercontent.com/render/math?math=dt = A*E[X^2(t)]">
+	  
 ~~~~
 #******************************************************
 #      			PROMEDIO DE
@@ -234,6 +263,12 @@ Es importante considerar que para el canal de ruido se utiliza se le ingresa un 
 aplican valores aleatorios ya que "np.random.normal(0, sigma, senal_modulada_tx.shape)" utiliza el paquete de aleatorio
 "random" por lo que cada vez que se ejecute este programa los resultados serán similares pero no iguales 
 y esto se acarrarea conforme se continua en el proceso de densidad espectral, decodificación y errores.
+
+<img src="https://render.githubusercontent.com/render/math?math=SNR_{dB} = 10 \log_{10}\left(\frac{P_s}{P_n}\right) ">
+
+Donde:
+
+Pn es la potencia del ruido ya que n por su sigla en inglés se refiere a noise y Ps es la potencia de la señal.
 
 ~~~~
 #******************************************************
@@ -318,6 +353,9 @@ welch_despues_3 = welch_senal(f_muestro, Rx_3, "despues_3", 1024)
 
 
 ## Demodulación y decodificación
+En esta sección se tiene que:
+
+
 ~~~~
 #******************************************************
 #      	DEMODULACION Y DECODIFICACION DE LA SENAL,
