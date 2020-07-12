@@ -5,3 +5,4 @@
 2. Variables aleatoriras presente en el folder: *Variables_Aleatorias*
 3. Variables aleatorias múltiples en el folder: *VA_multiples*
 4. Procesos aletorios en el folder: *Procesos_aleatorios*
+5. Cadenas de Markov en el folder: *Cadenas_markov*
