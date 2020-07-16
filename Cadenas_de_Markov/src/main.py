@@ -116,7 +116,7 @@ def graph_clients_x_se(lengenda, y_label, x_label,tvalor, pvalor, Xt_valor, z):
 	plt.ylabel(y_label)
 	plt.xlabel(x_label)
 	plt.title("Simulacion " + str(z))
-	plt.savefig('/Users/belindabrown/Desktop/Cadenas_de_Markov/results/Simulacion_%s.png'%z)
+	plt.savefig('/Users/belindabrown/Desktop/Modelos_Probabilisticos-master/Cadenas_de_Markov/results/Simulacion_%s.png'%z)
 	return
 
 #******************************************************
