@@ -38,6 +38,7 @@ from scipy import signal
 from scipy import integrate
 import scipy.stats as stats
 from matplotlib import cm
+from collections import OrderedDict
 
 #******************************************************
 #		DEFINICIONES
@@ -56,27 +57,38 @@ def viabilidad(N_clientes, clientes_x_s, servidores_x_s, clientes_x_fila):
 	# Tiempos de las llegadas (segundos desde el inicio)
 	t_lleg = [t_inte[0]]
 	for i in range(1, len(t_inte)):
-	    siguiente = t_lleg[i-1] + t_inte[i]
-	    t_lleg.append(siguiente)
+		siguiente = t_lleg[i-1] + t_inte[i]
+		t_lleg.append(siguiente)
 	# Tiempos de servicio (segundos desde inicio de servicio)
 	t_serv = np.ceil(Y.rvs(N_clientes)).astype('int')
 	# Inicialización del tiempo de inicio y fin de atención
-	inicio = t_lleg[0]          # primera llegada
-	fin = inicio + t_serv[0]    # primera salida
+	# Servidor ---0
+	inicio_t0 = t_lleg[0]          # primera llegada
+	fin0 = inicio_t0 + t_serv[0]    # primera salida
+	# Servidor ---1
+	inicio_t1 = 0 					# segunda llegada
+	fin1 = 0						# segunda salida
 	# Tiempos en que recibe atención cada i-ésimo cliente (!= que llega)
-	t_aten = [inicio]
+	t_aten = [inicio_t0]
 	for i in range(1, N_clientes):
-	    inicio = np.max((t_lleg[i], fin))
-	    fin = inicio + t_serv[i]
-	    t_aten.append(inicio)
+		if fin0<fin1:
+			inicio_t0 = np.max((t_lleg[i], fin0))
+			fin0 = inicio_t0 + t_serv[i]
+			t_aten.append(inicio_t0)
+		else:
+			inicio_t1 = np.max((t_lleg[i], fin1))
+			fin1 = inicio_t1 + t_serv[i]
+			t_aten.append(inicio_t1)
+	t_aten = sorted(t_aten)
 	# Inicialización del vector temporal para registrar eventos
-	t = np.zeros(t_aten[-1] + t_serv[-1] + 1)
+	# se contempla el máximo
+	t = np.zeros(np.max((fin0, fin1)) + 1)
 	# Asignación de eventos de llegada (+1) y salida (-1) de clientes
 	for c in range(N_clientes):
-	    i = t_lleg[c]
-	    t[i] += 1
-	    j = t_aten[c] + t_serv[c]
-	    t[j] -= 1
+		i = t_lleg[c]
+		t[i] = t[i] +  1
+		j = t_aten[c] + t_serv[c]
+		t[j] =  t[j] - 1
 	# Umbral de P o más personas en sistema (hay P - 1 en fila)
 	P = clientes_x_fila
 	# Instantes (segundos) de tiempo con P o más solicitudes en sistema
@@ -87,15 +99,15 @@ def viabilidad(N_clientes, clientes_x_s, servidores_x_s, clientes_x_fila):
 	n = 0
 	# Recorrido del vector temporal y conteo de clientes (estado n)
 	for i, c in enumerate(t):
-	    n += c # sumar (+1) o restar (-1) al estado
-	    Xt[i] = n
-	    if Xt[i] >= P:
-	        frecuencia += 1
+		n = n + c # sumar (+1) o restar (-1) al estado
+		Xt[i] = n
+		if Xt[i] >= P:
+			frecuencia =  frecuencia + 1
 	# Fracción de tiempo con P o más solicitudes en sistema
 	fraccion = frecuencia / len(t)
 	return t, lam, nu, fraccion, P, Xt
 
-def graph_clients_x_se(lengenda, y_label, x_label,tvalor, pvalor, Xt_valor):
+def graph_clients_x_se(lengenda, y_label, x_label,tvalor, pvalor, Xt_valor, z):
 	# Gráfica de X(t) (estados del sistema)
 	plt.figure()
 	plt.plot(Xt_valor)
@@ -103,25 +115,26 @@ def graph_clients_x_se(lengenda, y_label, x_label,tvalor, pvalor, Xt_valor):
 	plt.legend(lengenda)
 	plt.ylabel(y_label)
 	plt.xlabel(x_label)
-	plt.show()
+	plt.title("Simulacion " + str(z))
+	plt.savefig('/Users/belindabrown/Desktop/Cadenas_de_Markov/results/Simulacion_%s.png'%z)
 	return
 
 #******************************************************
 #		SIMULACION DE LA PROPUESTA DE
 # 		COMBINACION DE S & B PARA PRESUPUESTO
 #******************************************************
-# Parámetros viabilidad(N_clientes, clientes_x_s, servidores_x_s, clientes_x_fila)
-t_1, lam_1, nu_1, fraccion_1, P_1, Xt_1= viabilidad(10000,2, 4, 5)
-
-print('Parámetro de clientes por segundo --> lambda = ', str(lam_1*60))
-print('Parámetro de servicio --> nu = ', str(nu_1*60))
-print('Tiempo con más de {} solicitudes en fila:'.format(P_1-2))
-print('\t {:0.2f}%'.format(100*fraccion_1))
-if fraccion_1 <= 0.05:
-    print('\t Sí cumple con la especificación.')
-else:
-    print('\t No cumple con la especificación.')
-print('Simulación es equivalente a {:0.2f} horas.'.format(len(t_1)/3600))
-
-#************* Visualización ********************
-graph_clients_x_se(('$X(t) = n$', '$L_q = $' + str(P_1-2)),'Clientes en el sistema, n', 'Tiempo, t / segundos', t_1, P_1, Xt_1)
+repeticiones = int(input("\n\nDigite la cantidad de veces que desea realizar la simulacion,recuerde que todas las veces va a dar distinto pero cercano debido a las varibles aleatorias las cuales se trabajan con numpy random:           "))
+for zz in range(0, repeticiones):
+	t_1, lam_1, nu_1, fraccion_1, P_1, Xt_1= viabilidad(10000,2, 2, 7)
+	print("\n\n---------------------------------+++++++++++++---------------------------------")
+	print('\nParámetro de clientes por segundo --> lambda = ', str(lam_1*60))
+	print('Parámetro de servicio --> nu = ', str(nu_1*60))
+	print('Tiempo con más de {} solicitudes en fila:'.format(P_1-2))
+	print('\t {:0.2f}%'.format(100*fraccion_1))
+	if fraccion_1 <= 0.05:
+		print('\t Sí cumple con la especificación.')
+	else:
+		print('\t No cumple con la especificación.')
+	print('Simulación es equivalente a {:0.2f} horas.'.format(len(t_1)/3600))
+	#************* Visualización ********************
+	graph_clients_x_se(('$X(t) = n$', '$L_q = $' + str(P_1-2)),'Clientes en el sistema, n', 'Tiempo, t / segundos', t_1, P_1, Xt_1, zz)
