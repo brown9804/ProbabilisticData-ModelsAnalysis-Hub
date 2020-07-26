@@ -59,7 +59,7 @@ def ajuste_curva(marginal, par1, par2, distri_norm, graph_label_dis, distri_x_na
 	va = np.linspace(par1,par2,len(marginal))
 	plt.bar(va, marginal, label= graph_label_dis)
 	plt.legend()
-	plt.savefig("/Users/belindabrown/Desktop/VA_multiples/results/" + distri_x_name_img + ".png")
+	plt.savefig("/Users/belindabrown/Desktop/Tarea3/results/" + distri_x_name_img + ".png")
 	parametros_va, _ = curve_fit(distri_norm, va, marginal)
 	mu, sigma = parametros_va[0], parametros_va[1]
 	print("\n\nMu " + distri_x_name_img + " =		", mu)
@@ -68,7 +68,7 @@ def ajuste_curva(marginal, par1, par2, distri_norm, graph_label_dis, distri_x_na
 	curva_ajustada = np.linspace(va_function.ppf(0.01), va_function.ppf(0.99), 100)
 	plt.plot(curva_ajustada,va_function.pdf(curva_ajustada),label=func_graph_label)
 	plt.legend()
-	plt.savefig("/Users/belindabrown/Desktop/VA_multiples/results/" + function_va_img+".png")
+	plt.savefig("/Users/belindabrown/Desktop/Tarea3/results/" + function_va_img+".png")
 	# #                   Limpia el area de graficacion
 	plt.cla()
 	return curva_ajustada, mu, sigma
@@ -90,7 +90,7 @@ def grafica_en2d(mu_va, sigma_va, par1_modelo, nombre2d):
 	curve = np.linspace(va_funcion_distri.ppf(0.01), va_funcion_distri.ppf(0.99), par1_modelo)
 	plt.plot(curve,va_funcion_distri.pdf(curve),label=nombre2d)
 	plt.legend()
-	plt.savefig("/Users/belindabrown/Desktop/VA_multiples/results/" + nombre2d+".png")
+	plt.savefig("/Users/belindabrown/Desktop/Tarea3/results/" + nombre2d+".png")
 	# #                   Limpia el area de graficacion
 	plt.cla()
 	return
@@ -106,14 +106,14 @@ def grafica_en3d(VA0_modelo, VA1_modelo, VA0, VA1, nombre):
 	eje_x= plt.axes(projection='3d')
 	VA0,VA1 = np.meshgrid(VA0_modelo,VA1_modelo)
 	eje_x.plot_surface(VA0,VA1,np.array(Z),cmap=cm.coolwarm)
-	plt.savefig("/Users/belindabrown/Desktop/VA_multiples/results/" + nombre+".png")
+	plt.savefig("/Users/belindabrown/Desktop/Tarea3/results/" + nombre+".png")
 	return
 #******************************************************
 #               OBTENIENDO VALORES
 #		   DE LOS CSV
 #******************************************************
-data = pd.read_csv("/Users/belindabrown/Desktop/VA_multiples/data_base/xy.csv", index_col=0)
-data_xyp = pd.read_csv("/Users/belindabrown/Desktop/VA_multiples/data_base/xyp.csv")
+data = pd.read_csv("/Users/belindabrown/Desktop/Tarea3/data_base/xy.csv", index_col=0)
+data_xyp = pd.read_csv("/Users/belindabrown/Desktop/Tarea3/data_base/xyp.csv")
 #******************************************************
 #               CURVA DE MEJOR AJUSTE
 #		 DE LAS FUNCIONES DE
