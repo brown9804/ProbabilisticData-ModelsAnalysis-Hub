@@ -18,7 +18,9 @@ Last updated: 2020-04-14
 5. [Markov Chains](./Cadenas_de_Markov): Markov chains.  A Markov chain or Markov process is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. The defining characteristic of a Markov chain is that no matter how the process arrived at its present state, the possible future states are fixed.
 6. [Probabilities & Statistical Scripts](./ProbabilitiesStatisticalScripts/): This repository contains a collection of Python scripts related to probability and statistics
 
+<!-- START BADGE -->
 <div align="center">
-  <h3 style="color: #4CAF50;">Total Visitors</h3>
-  <img src="https://profile-counter.glitch.me/brown9804/count.svg" alt="Visitor Count" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+  <img src="https://img.shields.io/badge/Total%20views-1022-limegreen" alt="Total views">
+  <p>Refresh Date: 2025-07-11</p>
 </div>
+<!-- END BADGE -->
